@@ -1,0 +1,6 @@
+dat<-na.omit(ArrestMini)
+dat$ARRESTTIME<-substr(as.character(dat$ARRESTTIME), 1, 10)
+CrimeCount<-as.matrix(AggregateByCase(dat$ARRESTTIME,dat$COUNCIL_DISTRICT))
+CouncilCount<-as.matrix(UniqueAggregate(dat$ARRESTTIME,dat$COUNCIL_DISTRICT))
+time<-as.Date(sort(unique(dat$ARRESTTIME)),"%Y-%m-%d")
+PlotByTime(time,CouncilCount[,1])
